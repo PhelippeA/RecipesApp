@@ -1,5 +1,8 @@
+import 'package:AppReceitas/routes/categories_meals_route.dart';
 import 'package:AppReceitas/routes/categories_route.dart';
+import 'package:AppReceitas/routes/details_meal_route.dart';
 import 'package:flutter/material.dart';
+import 'utils/app_routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +23,11 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesRoute(),
+      routes: {
+        AppRoutes.home: (_) => CategoriesRoute(),
+        AppRoutes.categories_meals: (_) => CategoriesMealsRoute(),
+        AppRoutes.details_meal: (_) => DetailsMealRoute(),
+      },
     );
   }
 }

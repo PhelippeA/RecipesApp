@@ -1,7 +1,7 @@
-import 'package:AppReceitas/routes/categories_meals_route.dart';
-import 'package:AppReceitas/routes/categories_route.dart';
-import 'package:AppReceitas/routes/details_meal_route.dart';
 import 'package:flutter/material.dart';
+import 'routes/categories_meals_route.dart';
+import 'routes/categories_route.dart';
+import 'routes/details_meal_route.dart';
 import 'utils/app_routes.dart';
 
 void main() => runApp(MyApp());

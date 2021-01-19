@@ -1,5 +1,5 @@
-import 'package:AppReceitas/utils/app_routes.dart';
 import 'package:flutter/material.dart';
+import '../utils/app_routes.dart';
 import '../models/category.dart';
 
 class CategoryItem extends StatelessWidget {

@@ -48,8 +48,8 @@ class MainDrawer extends StatelessWidget {
           _createItem(
             Icons.settings,
             'Settings',
-            onTap: () =>
-                Navigator.of(context).pushReplacementNamed(AppRoutes.settings),
+            onTap: () => Navigator.of(context)
+                .pushReplacementNamed(AppRoutes.preferences),
           ),
         ],
       ),

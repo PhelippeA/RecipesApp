@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
 class DetailsMealRoute extends StatelessWidget {
-  final Meal meal;
-  const DetailsMealRoute({this.meal});
+  final Function(Meal) onToggleFavorite;
+  final bool Function(Meal) isFavorite;
+  const DetailsMealRoute(this.onToggleFavorite, this.isFavorite);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -83,6 +84,12 @@ class DetailsMealRoute extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border),
+        onPressed: () {
+          onToggleFavorite(meal);
+        },
       ),
     );
   }

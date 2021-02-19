@@ -1,4 +1,6 @@
+import 'package:AppReceitas/utils/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'categories_route.dart';
 import 'favorites_route.dart';
 import '../components/main_drawer.dart';
@@ -39,10 +41,29 @@ class _TabsRouteState extends State<TabsRoute> {
 
   @override
   Widget build(BuildContext context) {
+    var isLightTheme = true;
+    var theme = Get.theme.toString();
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text(_screens[_selectedScreenIndex]['title'], style: TextStyle(color: Theme.of(context).accentColor)),
+        title: Text(theme,
+        // Text(_screens[_selectedScreenIndex]['title'],
+            style: TextStyle(color: Theme.of(context).accentColor)),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: isLightTheme ? Icon(
+                Icons.wb_sunny,
+                color: Colors.white,
+              ) : Icon(
+                Icons.wb_sunny,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Get.changeTheme(AppTheme.darkTheme);
+                setState(() {});
+              })
+        ],
       ),
       drawer: MainDrawer(),
       body: _screens[_selectedScreenIndex]['screen'],

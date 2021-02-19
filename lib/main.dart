@@ -8,6 +8,8 @@ import 'routes/preferences_route.dart';
 import 'utils/app_routes.dart';
 import 'utils/themes.dart';
 import 'models/preferences.dart';
+import 'package:get/get.dart';
+import 'classTest.dart';
 
 void main() => runApp(MyApp());
 
@@ -51,9 +53,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'DeliMeals',
-      theme: AppTheme.darkTheme,
+
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       routes: {
         AppRoutes.home: (_) => TabsRoute(_favoriteMeal),
         AppRoutes.categories_meals: (_) =>

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
-    return new ThemeData(
-      primarySwatch: Colors.pink,
+    return new ThemeData.light().copyWith(
+      primaryColor: Colors.pink,
       scaffoldBackgroundColor: Colors.white,
       accentColor: Colors.amber,
-      fontFamily: 'Raleway',
       canvasColor: Color.fromRGBO(255, 254, 229, 1),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
@@ -18,7 +17,7 @@ class AppTheme {
   }
 
   static ThemeData get darkTheme {
-    return new ThemeData(
+    return new ThemeData.dark().copyWith(
       primaryColor: Colors.black,
       scaffoldBackgroundColor: Colors.grey[900],
       accentColor: Colors.amber[200],
@@ -28,7 +27,6 @@ class AppTheme {
         iconTheme: IconThemeData(color: Colors.amber[200]),
       ),
       iconTheme: IconThemeData(color: Colors.white),
-      fontFamily: 'Raleway',
       canvasColor: Color.fromRGBO(255, 254, 229, 1),
       textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(

@@ -6,6 +6,7 @@ import 'routes/categories_meals_route.dart';
 import 'routes/details_meal_route.dart';
 import 'routes/preferences_route.dart';
 import 'utils/app_routes.dart';
+import 'utils/themes.dart';
 import 'models/preferences.dart';
 
 void main() => runApp(MyApp());
@@ -52,18 +53,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DeliMeals',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        accentColor: Colors.amber,
-        fontFamily: 'Raleway',
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: TextStyle(
-                fontSize: 20,
-                fontFamily: 'RobotoCondensed',
-              ),
-            ),
-      ),
+      theme: AppTheme.darkTheme,
       routes: {
         AppRoutes.home: (_) => TabsRoute(_favoriteMeal),
         AppRoutes.categories_meals: (_) =>

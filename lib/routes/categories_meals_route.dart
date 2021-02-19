@@ -16,7 +16,9 @@ class CategoriesMealsRoute extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(category.title),
+        title: Text(category.title, style: TextStyle(color: Theme.of(context).accentColor),),
+        centerTitle: true,
+        actions: [IconButton(icon: Icon(Icons.wb_sunny), onPressed: () {})],
       ),
       body: ListView.builder(
         itemCount: categoryMeals.length,

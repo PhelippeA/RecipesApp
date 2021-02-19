@@ -41,7 +41,7 @@ class _TabsRouteState extends State<TabsRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_screens[_selectedScreenIndex]['title']),
+        title: Text(_screens[_selectedScreenIndex]['title'], style: TextStyle(color: Theme.of(context).accentColor)),
         centerTitle: true,
       ),
       drawer: MainDrawer(),

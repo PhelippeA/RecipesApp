@@ -22,8 +22,14 @@ class _PreferencesRouteState extends State<PreferencesRoute> {
   Widget _createSwitch(
       String title, String subtitle, bool value, Function(bool) onChanged) {
     return SwitchListTile.adaptive(
-      title: Text(title),
-      subtitle: Text(subtitle),
+      title: Text(
+        title,
+        style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
+      ),
       value: value,
       onChanged: (value) {
         onChanged(value);
@@ -36,7 +42,8 @@ class _PreferencesRouteState extends State<PreferencesRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Preferences'),
+        title: Text('Preferences', style: TextStyle(color: Theme.of(context).accentColor),),
+        centerTitle: true,
       ),
       drawer: MainDrawer(),
       body: Column(

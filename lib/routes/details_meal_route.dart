@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
@@ -37,7 +39,8 @@ class DetailsMealRoute extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(meal.title),
+        centerTitle: true,
+        title: Text(meal.title, style: TextStyle(color: Theme.of(context).accentColor),),
       ),
       body: SingleChildScrollView(
         child: Column(

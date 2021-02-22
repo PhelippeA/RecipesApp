@@ -23,7 +23,7 @@ class _TabsRouteState extends State<TabsRoute> {
     super.initState();
     _screens = [
       {
-        'title': 'Categories List',
+        'title': 'Food Categories',
         'screen': CategoriesRoute(),
       },
       {
@@ -41,27 +41,23 @@ class _TabsRouteState extends State<TabsRoute> {
 
   @override
   Widget build(BuildContext context) {
-    var isLightTheme = true;
-    var theme = Get.theme.toString();
-    
     return Scaffold(
       appBar: AppBar(
-        title: Text(theme,
-        // Text(_screens[_selectedScreenIndex]['title'],
-            style: TextStyle(color: Theme.of(context).accentColor)),
+        title: Text(
+          _screens[_selectedScreenIndex]['title'],
+          style: TextStyle(color: Theme.of(context).appBarTheme.textTheme.bodyText1.color),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
-              icon: isLightTheme ? Icon(
-                Icons.wb_sunny,
-                color: Colors.white,
-              ) : Icon(
-                Icons.wb_sunny,
-                color: Colors.white,
-              ),
+              icon: Get.isDarkMode
+                  ? Icon(Icons.wb_sunny)
+                  : Icon(Icons.nightlight_round),
+              color: Theme.of(context).appBarTheme.iconTheme.color,
               onPressed: () {
-                Get.changeTheme(AppTheme.darkTheme);
-                setState(() {});
+                Get.changeTheme(
+                  Get.isDarkMode ? AppTheme.lightTheme : AppTheme.darkTheme,
+                );
               })
         ],
       ),

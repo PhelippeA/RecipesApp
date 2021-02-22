@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../components/main_drawer.dart';
 import '../models/preferences.dart';
 
@@ -13,11 +14,15 @@ class PreferencesRoute extends StatefulWidget {
 
 class _PreferencesRouteState extends State<PreferencesRoute> {
   Preferences preferences;
+  SharedPreferences prefs;
 
   initState() {
     super.initState();
     preferences = widget.preferences;
+    prefs = getPreferences();
   }
+
+  getPreferences() async => await SharedPreferences.getInstance();
 
   Widget _createSwitch(
       String title, String subtitle, bool value, Function(bool) onChanged) {
@@ -42,7 +47,10 @@ class _PreferencesRouteState extends State<PreferencesRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Preferences', style: TextStyle(color: Theme.of(context).accentColor),),
+        title: Text(
+          'Preferences',
+          style: TextStyle(color: Theme.of(context).accentColor),
+        ),
         centerTitle: true,
       ),
       drawer: MainDrawer(),
@@ -56,25 +64,37 @@ class _PreferencesRouteState extends State<PreferencesRoute> {
                   'Gluten-Free',
                   'Shows only gluten-free meals',
                   preferences.isGlutenFree,
-                  (value) => setState(() => preferences.isGlutenFree = value),
+                  (value) => setState(() {
+                    prefs.setBool("isGlutenFree", value);
+                    preferences.isGlutenFree = value;
+                  }),
                 ),
                 _createSwitch(
                   'Lactose-Free',
                   'Shows only lactose-free meals',
                   preferences.isLactoseFree,
-                  (value) => setState(() => preferences.isLactoseFree = value),
+                  (value) => setState(() {
+                    prefs.setBool("isLactoseFree", value);
+                    preferences.isLactoseFree = value;
+                  }),
                 ),
                 _createSwitch(
                   'Vegan',
                   'Shows only vegan meals',
                   preferences.isVegan,
-                  (value) => setState(() => preferences.isVegan = value),
+                  (value) => setState(() {
+                    prefs.setBool("isVegan", value);
+                    preferences.isVegan = value;
+                  }),
                 ),
                 _createSwitch(
                   'Vegetarian',
                   'Shows only vegetarian meals',
                   preferences.isVegetarian,
-                  (value) => setState(() => preferences.isVegetarian = value),
+                  (value) => setState(() {
+                    prefs.setBool("isVegetarian", value);
+                    preferences.isVegetarian = value;
+                  }),
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'data/dummy_data.dart';
 import 'models/meal.dart';
 import 'routes/tabs_route.dart';
@@ -9,7 +10,6 @@ import 'utils/app_routes.dart';
 import 'utils/themes.dart';
 import 'models/preferences.dart';
 import 'package:get/get.dart';
-import 'classTest.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +23,9 @@ class _MyAppState extends State<MyApp> {
   List<Meal> _availableMeals = DUMMY_MEALS;
   List<Meal> _favoriteMeal = [];
 
+  getData() async {
+    
+  }
   void _filterMeals(Preferences preferences) {
     setState(() {
       this._preferences = preferences;
@@ -55,12 +58,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'DeliMeals',
-
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       routes: {
         AppRoutes.home: (_) => TabsRoute(_favoriteMeal),
+        // AppRoutes.home: (_) => ThemeTest(),
         AppRoutes.categories_meals: (_) =>
             CategoriesMealsRoute(_availableMeals),
         AppRoutes.details_meal: (_) =>

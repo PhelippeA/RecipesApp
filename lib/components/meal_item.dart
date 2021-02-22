@@ -1,6 +1,4 @@
-import 'package:AppReceitas/routes/details_meal_route.dart';
 import 'package:AppReceitas/utils/app_routes.dart';
-
 import '../models/meal.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +19,7 @@ class MealItem extends StatelessWidget {
     return InkWell(
       onTap: () => _selectMeal(context),
       child: Card(
+        color: Theme.of(context).accentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -67,31 +66,48 @@ class MealItem extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.schedule),
-                      SizedBox(width: 6),
-                      Text('${meal.duration} min'),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.work),
-                      SizedBox(width: 6),
-                      Text('${meal.complexityText}'),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.attach_money),
-                      SizedBox(width: 6),
-                      Text('${meal.costText}'),
-                    ],
-                  ),
-                ],
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.schedule),
+                        SizedBox(width: 6),
+                        Text(
+                          '${meal.duration} min',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryTextTheme.bodyText1.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.work),
+                        SizedBox(width: 6),
+                        Text(
+                          '${meal.complexityText}',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryTextTheme.bodyText1.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.attach_money),
+                        SizedBox(width: 6),
+                        Text(
+                          '${meal.costText}',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryTextTheme.bodyText1.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             )
           ],

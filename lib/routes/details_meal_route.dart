@@ -16,10 +16,12 @@ class DetailsMealRoute extends StatelessWidget {
     );
   }
 
-  Widget _createSectionContainer(BuildContext context, Widget widget) {
+  Widget _createSectionContainer(
+      BuildContext context, Widget widget, int itemCount) {
+    print(itemCount);
     return Container(
       width: MediaQuery.of(context).size.width * 0.85,
-      height: 200,
+      height: double.tryParse("${itemCount * 40}"),
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -38,7 +40,10 @@ class DetailsMealRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(meal.title, style: TextStyle(color: Theme.of(context).accentColor),),
+        title: Text(
+          meal.title,
+          style: TextStyle(color: Theme.of(context).accentColor),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -66,28 +71,32 @@ class DetailsMealRoute extends StatelessWidget {
                   color: Theme.of(context).accentColor,
                 ),
               ),
+              meal.ingredients.length,
             ),
             _createSectionTitle(context, 'Steps'),
             _createSectionContainer(
               context,
               ListView.builder(
-                itemCount: meal.ingredients.length,
+                itemCount: meal.steps.length,
                 itemBuilder: (ctx, index) => Card(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 5,
                         horizontal: 10,
                       ),
-                      child: Text(meal.ingredients[index])),
+                      child: Text(meal.steps[index])),
                   color: Theme.of(context).accentColor,
                 ),
               ),
+              meal.steps.length,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border),
+        backgroundColor: Theme.of(context).accentIconTheme.color,
+        child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border,
+            color: Theme.of(context).iconTheme.color),
         onPressed: () {
           onToggleFavorite(meal);
         },

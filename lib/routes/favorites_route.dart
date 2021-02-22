@@ -10,7 +10,13 @@ class FavoritesRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     if (_favoriteMeals.isEmpty)
       return Center(
-        child: Text('There isn\'t any favorite meals yet'),
+        child: Text(
+          'There isn\'t any favorite meals yet',
+          style: TextStyle(
+            fontSize: 20,
+            color: Theme.of(context).primaryTextTheme.bodyText1.color,
+          ),
+        ),
       );
     else
       return ListView.builder(
